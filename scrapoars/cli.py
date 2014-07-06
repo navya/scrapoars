@@ -59,7 +59,7 @@ def scrapoars():
     dic = parse(args.txt_dir, sublist, args.debug)
   else:
     raise Exception("Specified exe not found")
-    exit()
+    exit(1)
 
   toJson(dic, args.json)
   print("Done!")
