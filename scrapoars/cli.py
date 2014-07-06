@@ -24,11 +24,11 @@ def scrapoars():
   # trouble shooting
   troubleshooting_group = parser.add_argument_group('troubleshooting')
   troubleshooting_group.add_argument('--debug', action='store_true', help='debug output')
-  troubleshooting_group.add_argument('--version', action='version', version=__version__)
-  troubleshooting_group.add_argument('--help', action='help', help='show this help message and exit')
+  troubleshooting_group.add_argument('-v', '--version', action='version', version=__version__)
+  troubleshooting_group.add_argument('-h', '--help', action='help', help='show this help message and exit')
 
   # external program
-  ext_group = parse.add_argument_group('external')
+  ext_group = parser.add_argument_group('external')
   ext_group.add_argument('-e', '--exe', default='elinks', help='External program to use for html2text conversion')
   
   # output
