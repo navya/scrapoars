@@ -53,13 +53,12 @@ def scrapoars():
 
   check(preurl, sublist, args.html_dir, args.debug)
 
-  dumpTxt(args.html_dir, args.txt_path, sublist, args.debug)
-
   if not shutil.which(args.exe) is None:
-    dic = parse(args.txt_dir, sublist, args.debug)
+    dumpTxt(args.html_dir, args.txt_path, sublist, args.exe)
   else:
     raise Exception("Specified exe not found")
     exit(1)
 
+  dic = parse(args.txt_dir, sublist, args.debug)
   toJson(dic, args.json)
   print("Done!")
