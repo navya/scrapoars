@@ -8,7 +8,7 @@
 $ git clone https://github.com/rejuvyesh/scrapoars.git
 $ cd scrapoars
 $ pip install -r requirements.txt
-$ python3 setup.py
+$ python3 setup.py install
 ```
 
 ## Usage
