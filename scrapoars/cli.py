@@ -54,7 +54,7 @@ def scrapoars():
   check(preurl, sublist, args.html_dir, args.debug)
 
   if not shutil.which(args.exe) is None:
-    dumpTxt(args.html_dir, args.txt_path, sublist, args.exe)
+    dumpTxt(args.html_dir, args.txt_dir, sublist, args.exe)
   else:
     raise Exception("Specified exe not found")
     exit(1)
