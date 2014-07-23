@@ -39,9 +39,9 @@ def scrape(preurl, sublist, htmlpath, sleep=3, force=False, debug=False):
   Scrape
   '''
   for sub in sublist:
-    filename = htmlpath + sub + '.html'
+    filename = os.path.join(htmlpath, sub + '.html')
     url = preurl + sub
-    if os.stat(filename).st_size > 0 or force:
+    if (not os.path.exists(filename)) or force:
       time.sleep(sleep)
       attempt = 0
       while attempt < 5:
@@ -65,7 +65,7 @@ def check(preurl, sublist, htmlpath, debug=False):
   Check for inconsistencies
   '''
   for sub in sublist:
-    filename = htmlpath + sub + '.html'
+    filename = os.path.join(htmlpath, sub + '.html')
     if os.stat(filename).st_size == 0 or 'error' in open(filename, 'r').read():
       scrape(preurl, [sub], htmlpath, force=True)
 
@@ -76,8 +76,8 @@ def dumpTxt(htmlpath, txtpath, sublist, exe='elinks'):
   '''
   for sub in sublist:
     try:
-      html = htmlpath + sub + '.html'
-      txt = txtpath + sub + '.txt'
+      html = os.path.join(htmlpath, sub + '.html')
+      txt = os.path.join(txtpath, sub + '.txt')
       txtoutput = subprocess.Popen([exe, " -dump ", html],
                                    stdout=subprocess.PIPE).communicate()[0]
       with open(txt, 'wt') as f:
@@ -92,7 +92,7 @@ def parse(txtpath, sublist, debug=False):
   '''
   finaldic = []
   for sub in sublist:
-    filename = txtpath + sub + '.txt'
+    filename = os.path.join(txtpath, sub + '.txt')
     with open(filename, 'r') as f:
       lines = f.readlines()
     # Split at newlines
