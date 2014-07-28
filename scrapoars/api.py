@@ -79,9 +79,9 @@ def dumpTxt(htmlpath, txtpath, sublist, exe='elinks'):
       html = os.path.join(htmlpath, sub + '.html')
       txt = os.path.join(txtpath, sub + '.txt')
       txtoutput = subprocess.Popen([exe, " -dump ", html],
-                                   stdout=subprocess.PIPE).communicate()[0]
-      with open(txt, 'wt') as f:
-        f.write(txtoutput)
+                                   stdout=subprocess.PIPE).communicate()[0].decode('utf8')
+      with open(txt, 'w') as f:
+        print(txtoutput, file=f)
     except:
       continue
 
@@ -124,5 +124,5 @@ def toJson(dic, jsonpath):
   '''
   Save to json
   '''
-  with open(jsonpath) as f:
+  with open(jsonpath, 'w') as f:
     json.dump(dic, f, sort_keys=True, indent=4)
