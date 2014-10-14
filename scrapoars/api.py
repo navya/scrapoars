@@ -113,7 +113,7 @@ def parse(txtpath, sublist, debug=False):
       try:
         dic[p[0].lstrip()] = p[1].lstrip()
       except:
-        dic[p[0].lstrip] = None
+        dic[p[0].lstrip()] = None
     finaldic.append(dic)
   if debug:
     print(finaldic)
