@@ -7,7 +7,7 @@
 #
 
 __title__ = 'scrapoars'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __author__ = 'rejuvyesh'
 __license__ = 'GPLv3'
 __copyright__ = 'Copyright 2014, rejuvyesh'
